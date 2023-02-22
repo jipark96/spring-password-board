@@ -4,10 +4,9 @@ import com.example.board.Dto.BoardSaveDto;
 import com.example.board.Entity.Board;
 import com.example.board.Service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.regex.Pattern;
 
 @RestController
@@ -25,5 +24,10 @@ public class BoardController {
             return boardService.addBoard(boardSaveDto);
         }
         return null;
+    }
+
+    @DeleteMapping("/board/delete/{id}")
+    public Board delete(@PathVariable("id") Long id) {
+        return boardService.delete(id);
     }
 }
