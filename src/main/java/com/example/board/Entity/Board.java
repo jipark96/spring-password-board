@@ -1,5 +1,6 @@
 package com.example.board.Entity;
 
+import com.example.board.Dto.BoardEditDto;
 import com.example.board.Dto.BoardSaveDto;
 import lombok.Builder;
 import lombok.Data;
@@ -48,6 +49,19 @@ public class Board {
         this.content = boardSaveDto.getContent();
         this.password = boardSaveDto.getPassword();
         this.weather = boardSaveDto.getWeather();
+    }
+
+    @Builder
+    public Board(BoardEditDto boardEditDto) {
+        this.id = boardEditDto.getId();
+        this.password = boardEditDto.getPassword();
+        this.title = boardEditDto.getTitle();
+        this.content = boardEditDto.getContent();
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
 
